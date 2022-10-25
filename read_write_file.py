@@ -1,3 +1,6 @@
+"""
+Lab 6 #4
+"""
 from typing import List, TextIO
 from io import StringIO
 import urllib.request
