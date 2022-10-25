@@ -60,5 +60,9 @@ smyarga/11f19a39d62fabd2a2e15d54803d82c9/raw/\
         text_file.write(string)
 
 if __name__ == '__main__':
-    import doctest
-    print(doctest.testmod())
+    # import doctest
+    # print(doctest.testmod())
+    with open('total.csv', 'w', encoding = 'utf-8') as output_file:
+        write_csv_file('https://gist.githubusercontent.com/\
+smyarga/11f19a39d62fabd2a2e15d54803d82c9/raw/\
+483ebe78bbd53cbb4918d67c5f8273edcee2353d/total.txt', output_file)
