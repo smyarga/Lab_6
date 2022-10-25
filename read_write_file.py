@@ -1,4 +1,6 @@
-from typing import List
+from typing import List, TextIO
+from io import StringIO
+import urllib.request
 
 def read_input_file(url: str, number: int) -> List[List[str]]:
     """
@@ -36,7 +38,9 @@ def write_csv_file(url: str, text_file: TextIO) -> None:
     """
     Adding info to csv file
     >>> outfile = StringIO()
-    >>> write_csv_file('https://gist.githubusercontent.com/smyarga/11f19a39d62fabd2a2e15d54803d82c9/raw/483ebe78bbd53cbb4918d67c5f8273edcee2353d/total.txt', outfile)
+    >>> write_csv_file('https://gist.githubusercontent.com/\
+smyarga/11f19a39d62fabd2a2e15d54803d82c9/raw/\
+483ebe78bbd53cbb4918d67c5f8273edcee2353d/total.txt', outfile)
     >>> outfile.getvalue()
     '№,ПІБ,Д,Заг.бал,С.б.док.осв.\\n1,Мацюк М. І.,+,197.859,10.80\\n'
     """
