@@ -32,5 +32,26 @@ Test_Olya/master/New%20folder/total.txt',3)
 
 
 
-def write_csv_file(url: str):
-    pass
+def write_csv_file(url: str, text_file: TextIO) -> None:
+    """
+    Adding info to csv file
+    >>> outfile = StringIO()
+    >>> write_csv_file('https://gist.githubusercontent.com/smyarga/11f19a39d62fabd2a2e15d54803d82c9/raw/483ebe78bbd53cbb4918d67c5f8273edcee2353d/total.txt', outfile)
+    >>> outfile.getvalue()
+    '№,ПІБ,Д,Заг.бал,С.б.док.осв.\\n1,Мацюк М. І.,+,197.859,10.80\\n'
+    """
+    counter = 0
+    with urllib.request.urlopen(url) as webpage:
+        for line in webpage:
+            line = line.strip().decode('utf-8')
+            line = line.split('\t')
+            if line[0].isdigit():
+                counter += 1
+    text_file.write('№,ПІБ,Д,Заг.бал,С.б.док.осв.\n')
+    for item in read_input_file(url, counter):
+        string = ','.join(item) + '\n'
+        text_file.write(string)
+
+if __name__ == '__main__':
+    import doctest
+    print(doctest.testmod())
